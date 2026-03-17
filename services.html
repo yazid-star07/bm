@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services - Space Theme</title>
+
+<style>
+/* Reset dasar */
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Body & Background Space */
+body {
+  background: radial-gradient(ellipse at bottom, #0d0d1a 0%, #000000 100%);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Stars animation */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+  0%,100% {opacity:0.5;}
+  50% {opacity:1;}
+}
+
+/* Header / menu */
+nav {
+  padding: 20px;
+  text-align: center;
+  background-color: rgba(0,0,0,0.7);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Konten */
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #ffcc00;
+  text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff9900;
+}
+
+h2 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #ffffff;
+  text-shadow: 0 0 5px #ffffff;
+}
+
+p {
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  h1 {font-size:28px;}
+  h2 {font-size:20px;}
+  p {font-size:14px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<a href="index.html">Home</a> |
+<a href="services.html">Services</a> |
+<a href="about.html">About</a> |
+<a href="contact.html">Contact</a>
+</nav>
+
+<div class="container">
+<h1>Our Services</h1>
+
+<h2>Web Design & Development</h2>
+<p>Kami membina website modern, responsif, dan menarik untuk semua device.</p>
+
+<h2>Digital Marketing</h2>
+<p>Kami membantu meningkatkan kehadiran online melalui strategi marketing, SEO, dan social media management.</p>
+
+<h2>Branding & Graphic Design</h2>
+<p>Kami menawarkan servis branding profesional termasuk logo, identiti korporat, dan materi promosi kreatif.</p>
+</div>
+
+<script>
+// Buat bintang di halaman Services
+for(let i=0;i<100;i++){
+  let star = document.createElement('div');
+  star.className='star';
+  star.style.top=Math.random()*100+'vh';
+  star.style.left=Math.random()*100+'vw';
+  star.style.width=(Math.random()*2+1)+'px';
+  star.style.height=(Math.random()*2+1)+'px';
+  document.body.appendChild(star);
+}
+</script>
+
+</body>
+</html>

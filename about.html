@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - MyWebsite</title>
+
+<style>
+/* Reset dasar */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial;
+}
+
+/* Header & Navigation */
+header{
+  background:#111;
+  padding:20px 50px;
+  position:relative;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+}
+
+.logo{
+  color:white;
+  font-size:22px;
+}
+
+.menu{
+  list-style:none;
+  display:flex;
+  margin-left:auto;
+}
+
+.menu li{
+  margin-left:30px;
+}
+
+.menu li a{
+  text-decoration:none;
+  color:white;
+  font-size:16px;
+}
+
+.menu-toggle{
+  display:none;
+  font-size:26px;
+  color:white;
+  margin-left:auto;
+  cursor:pointer;
+}
+
+/* Konten halaman */
+.main-content{
+  padding:50px 20px;
+  max-width:900px;
+  margin:0 auto;
+  text-align:center;
+}
+
+h1{
+  margin-bottom:20px;
+}
+
+h2{
+  margin-top:30px;
+  margin-bottom:15px;
+}
+
+p{
+  font-size:16px;
+  line-height:1.6;
+}
+
+/* Responsive untuk phone */
+@media (max-width:768px){
+  header{
+    padding:15px 20px;
+  }
+
+  .menu{
+    display:none;
+    flex-direction:column;
+    width:100%;
+    background:#111;
+    position:absolute;
+    top:70px;
+    left:0;
+  }
+
+  .menu li{
+    margin:15px 0;
+    text-align:center;
+  }
+
+  .menu.active{
+    display:flex;
+  }
+
+  .menu-toggle{
+    display:block;
+  }
+
+  h1{
+    font-size:28px;
+  }
+
+  h2{
+    font-size:22px;
+  }
+
+  p{
+    font-size:14px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<h2 class="logo">MyWebsite</h2>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<ul class="menu" id="menu">
+<li><a href="index.html">Home</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</nav>
+</header>
+
+<div class="main-content">
+<h1>Website Saya</h1>
+
+<h2>About Us</h2>
+<p>Kami adalah syarikat yang membina website moden. Kami fokus pada design yang responsif, cantik dan mesra pengguna. Website kami mudah diakses di desktop dan phone.</p>
+</div>
+
+<script>
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>
