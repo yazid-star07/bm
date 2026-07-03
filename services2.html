@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Interactive - Alat Pertuturan</title>
+    <!-- Memasukkan Font Google Moden & Futuristik -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Plus+Jakarta+Sans:wght@500;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            min-height: 100vh;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            /* Latar belakang angkasa nebula menyerupai index */
+            background: radial-gradient(circle at 30% 20%, #3a0ca3 0%, #050014 60%),
+                        radial-gradient(circle at 80% 80%, #00f5d4 0%, #0a0028 70%),
+                        radial-gradient(circle at 50% 50%, #ff007f 0%, #050014 100%);
+            background-blend-mode: screen;
+            background-attachment: fixed;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        /* Lapisan Bintang Menggelap (Stars Container) */
+        .space-overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #ffffff, 0 0 15px #00f5d4;
+            animation: flicker 3s infinite ease-in-out;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+
+        /* Butang Kembali Gempak */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            display: inline-block;
+            padding: 10px 24px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 900;
+            text-decoration: none;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 245, 212, 0.4);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 245, 212, 0.1);
+        }
+
+        .back-btn:hover {
+            color: #050014;
+            background: linear-gradient(45deg, #00f5d4, #ffee32);
+            box-shadow: 0 0 20px #00f5d4;
+            transform: translateX(-3px);
+        }
+
+        /* Header Tajuk */
+        .header-section {
+            text-align: center;
+            margin-top: 4rem;
+            margin-bottom: 2.5rem;
+            z-index: 10;
+        }
+
+        .main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 30%, #00f5d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            filter: drop-shadow(0 2px 10px rgba(0, 245, 212, 0.3));
+        }
+
+        .sub-title {
+            font-size: 1rem;
+            color: #ffee32;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 8px rgba(255, 238, 50, 0.5);
+        }
+
+        /* Layout Utama Alat Pertuturan */
+        .interactive-container {
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: 280px 1fr 280px;
+            gap: 2rem;
+            align-items: center;
+            max-width: 1300px;
+            width: 100%;
+            background: rgba(10, 5, 30, 0.55);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 0, 127, 0.3);
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Kolum Butang Info */
+        .info-column {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Gaya Butang Nombor / Item */
+        .info-button {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 18px;
+            border-radius: 14px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            color: rgba(255, 255, 255, 0.85);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 500;
+        }
+
+        .info-button .number-circle {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            background: rgba(0, 245, 212, 0.1);
+            border: 2px solid #00f5d4;
+            color: #00f5d4;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 245, 212, 0.2);
+        }
+
+        /* Hover & Active Effects */
+        .info-button:hover {
+            background: rgba(0, 245, 212, 0.08);
+            border-color: rgba(0, 245, 212, 0.5);
+            transform: scale(1.03);
+            color: #ffffff;
+        }
+
+        .info-button:hover .number-circle {
+            background: #00f5d4;
+            color: #050014;
+            box-shadow: 0 0 15px #00f5d4;
+        }
+
+        /* Bahagian Tengah (Gambar Rajah) */
+        .diagram-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95); /* Putih bersih supaya gambar rajah hitam kelihatan jelas */
+            padding: 1.5rem;
+            border-radius: 18px;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2), 0 0 35px rgba(255, 0, 127, 0.15);
+            border: 2px solid rgba(255, 0, 127, 0.2);
+        }
+
+        .diagram-img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            filter: contrast(1.1); /* Mengeluarkan lagi kejelasan dakwat hitam */
+        }
+
+        /* Responsif untuk Tablet dan Telefon */
+        @media (max-width: 1024px) {
+            .interactive-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .info-column {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 12px;
+            }
+            body {
+                padding-top: 6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title { font-size: 1.8rem; }
+            .sub-title { font-size: 0.85rem; }
+            .info-column { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Latar Belakang Bintang Bergerak -->
+    <div class="space-overlay" id="starsContainer"></div>
+
+    <!-- Butang Kembali -->
+    <a href="pilihan2.html" class="back-btn">← KEMBALI</a>
+
+    <!-- Header Tajuk Utama -->
+    <div class="header-section">
+        <h1 class="main-title">Alat Pertuturan</h1>
+        <div class="sub-title">Klik nombor di bulatan untuk info</div>
+    </div>
+
+    <!-- Kandungan Interaktif Grid -->
+    <div class="interactive-container">
+        
+        <!-- Kolum Kiri (Item 1 Hingga 7) -->
+        <div class="info-column">
+            <button class="info-button" onclick="location.href='page1_2.html'">
+                <div class="number-circle">1</div>
+                <span>BIBIR ATAS</span>
+            </button>
+            <button class="info-button" onclick="location.href='page2_2.html'">
+                <div class="number-circle">2</div>
+                <span>BIBIR BAWAH</span>
+            </button>
+            <button class="info-button" onclick="location.href='page3_2.html'">
+                <div class="number-circle">3</div>
+                <span>GIGI ATAS</span>
+            </button>
+            <button class="info-button" onclick="location.href='page1_2.html'">
+                <div class="number-circle">4</div>
+                <span>GUSI ATAS</span>
+            </button>
+            <button class="info-button" onclick="location.href='page1_2.html'">
+                <div class="number-circle">5</div>
+                <span>DEPAN LIDAH</span>
+            </button>
+            <button class="info-button" onclick="location.href='page1_2.html'">
+                <div class="number-circle">6</div>
+                <span>TENGAH LIDAH</span>
+            </button>
+            <button class="info-button" onclick="alert('Info mengenai BELAKANG LIDAH')">
+                <div class="number-circle">7</div>
+                <span>BELAKANG LIDAH</span>
+            </button>
+        </div>
+
+        <!-- Kolum Tengah (Gambar Rajah) -->
+        <div class="diagram-area">
+            <!-- Nota: Gantikan 'rajah_alat.jpg' dengan nama atau path file gambar anda sekiranya berbeza -->
+            <img src="gambar.jpg" alt="Rajah Alat Pertuturan" class="diagram-img">
+        </div>
+
+        <!-- Kolum Kanan (Item 8 Hingga 13) -->
+        <div class="info-column">
+            <button class="info-button" onclick="alert('Info mengenai LELANGIT KERAS')">
+                <div class="number-circle">8</div>
+                <span>LELANGIT KERAS</span>
+            </button>
+            <button class="info-button" onclick="alert('Info mengenai LELANGIT LEMBUT')">
+                <div class="number-circle">9</div>
+                <span>LELANGIT LEMBUT</span>
+            </button>
+            <button class="info-button" onclick="alert('Info mengenai ANAK TEKAK')">
+                <div class="number-circle">10</div>
+                <span>ANAK TEKAK</span>
+            </button>
+            <button class="info-button" onclick="alert('Info mengenai EPIGLOTIS')">
+                <div class="number-circle">11</div>
+                <span>EPIGLOTIS</span>
+            </button>
+            <button class="info-button" onclick="alert('Info mengenai AKAR LIDAH')">
+                <div class="number-circle">12</div>
+                <span>AKAR LIDAH</span>
+            </button>
+            <button class="info-button" onclick="alert('Info mengenai PITA SUARA')">
+                <div class="number-circle">13</div>
+                <span>PITA SUARA</span>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Skrip Dinamik Penjana Bintang Kelip (Sama seperti index) -->
+    <script>
+        const container = document.getElementById('starsContainer');
+        const starCount = 60;
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            
+            const size = Math.random() * 3 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            star.style.animationDelay = `${Math.random() * 3}s`;
+            star.style.animationDuration = `${2 + Math.random() * 2}s`;
+            
+            container.appendChild(star);
+        }
+    </script>
+</body>
+</html>

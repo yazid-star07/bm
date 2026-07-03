@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jenis Alat Pertuturan - Yazid Space</title>
+    <!-- Memasukkan Font Google Moden & Futuristik -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Plus+Jakarta+Sans:wght@500;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            /* Latar belakang angkasa nebula yang serasi dengan halaman utama */
+            background: radial-gradient(circle at 30% 20%, #3a0ca3 0%, #050014 60%),
+                        radial-gradient(circle at 80% 80%, #00f5d4 0%, #0a0028 70%),
+                        radial-gradient(circle at 50% 50%, #ff007f 0%, #050014 100%);
+            background-blend-mode: screen;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Lapisan Bintang Menggelap (Stars Container) */
+        .space-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #ffffff, 0 0 15px #00f5d4;
+            animation: flicker 3s infinite ease-in-out;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+
+        /* Butang Kembali */
+        .back-btn {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            z-index: 15;
+            display: inline-block;
+            padding: 10px 24px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 900;
+            text-decoration: none;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 245, 212, 0.4);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 245, 212, 0.1);
+        }
+
+        .back-btn:hover {
+            color: #050014;
+            background: linear-gradient(45deg, #00f5d4, #ffee32);
+            box-shadow: 0 0 20px #00f5d4;
+            transform: translateX(-3px);
+        }
+
+        /* Kad Utama */
+        .main-container {
+            position: relative;
+            z-index: 10;
+            background: rgba(10, 5, 30, 0.65);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 2px solid rgba(255, 0, 127, 0.3); /* Sempadan bercahaya pink neon */
+            padding: 3.5rem 2.5rem;
+            border-radius: 24px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7),
+                        0 0 40px rgba(0, 245, 212, 0.1);
+            animation: floatingCard 6s ease-in-out infinite;
+        }
+
+        @keyframes floatingCard {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Tajuk Menu */
+        .main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            line-height: 1.2;
+            color: #ffffff;
+            background: linear-gradient(135deg, #ffffff 40%, #00f5d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            filter: drop-shadow(0 2px 10px rgba(0, 245, 212, 0.2));
+        }
+
+        /* Ruang Butang Pilihan */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        /* Gaya Butang Menu */
+        .menu-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 900;
+            text-decoration: none;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        /* Butang 1: Aktif (Glow Cyan) */
+        .btn-active {
+            color: #050014;
+            background: linear-gradient(45deg, #00f5d4, #ffffff);
+            box-shadow: 0 0 20px rgba(0, 245, 212, 0.4);
+            border: none;
+        }
+
+        .btn-active:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 0 35px #00f5d4;
+        }
+
+        /* Butang 2: Pasif (Glow Kuning/Pink) */
+        .btn-pasif {
+            color: #050014;
+            background: linear-gradient(45deg, #ffee32, #ff007f);
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
+            border: none;
+        }
+
+        .btn-pasif:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 0 35px #ff007f, 0 0 15px #ffee32;
+        }
+
+        /* Responsif Skrin Kecil */
+        @media (max-width: 480px) {
+            .main-title { font-size: 1.7rem; }
+            .menu-button { font-size: 0.95rem; padding: 14px 20px; }
+            .main-container { padding: 2.5rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Latar Belakang & Kesan Bintang -->
+    <div class="space-overlay" id="starsContainer"></div>
+
+    <!-- Butang Kembali ke Halaman Utama -->
+    <a href="pilihan2.html" class="back-btn">← KEMBALI</a>
+
+    <!-- Kotak Kandungan Utama -->
+    <div class="main-container">
+        <h1 class="main-title">Alat Pertuturan</h1>
+        
+        <div class="button-group">
+            <!-- Pautan ke bahagian Aktif -->
+            <a href="aktif.html" class="menu-button btn-active">
+                <span>🗣️</span> ALAT PERTUTURAN AKTIF
+            </a>
+            
+            <!-- Pautan ke bahagian Pasif -->
+            <a href="pasif.html" class="menu-button btn-pasif">
+                <span>📚</span> ALAT PERTUTURAN PASIF
+            </a>
+        </div>
+    </div>
+
+    <!-- Skrip Dinamik Penjana Bintang Kelip -->
+    <script>
+        const container = document.getElementById('starsContainer');
+        const starCount = 70;
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            
+            const size = Math.random() * 3.5 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            star.style.animationDelay = `${Math.random() * 3}s`;
+            star.style.animationDuration = `${2 + Math.random() * 2}s`;
+            
+            container.appendChild(star);
+        }
+    </script>
+</body>
+</html>
